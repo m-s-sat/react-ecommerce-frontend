@@ -5,7 +5,7 @@ import {
   StarIcon,
 } from "@heroicons/react/20/solid";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchAllProductAsync, selectAllProducts } from "../ProductSlice";
+import { fetchAllProductAsync, selectAllProducts, fetchProductByFiltersAsync } from "../ProductSlice";
 import {
   Dialog,
   DialogBackdrop,
@@ -29,11 +29,9 @@ import {
 import { Link } from "react-router-dom";
 
 const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
-  { name: "Price: Low to High", href: "#", current: false },
-  { name: "Price: High to Low", href: "#", current: false },
+  { name: "Best Rating", sort: "rating", current: false },
+  { name: "Price: Low to High", sort: "price",order:'asc', current: false },
+  { name: "Price: High to Low", sort: "price",order:'desc' , current: false },
 ];
 const filters = [
   {
@@ -107,6 +105,17 @@ export default function ProductList() {
   useEffect(() => {
     dispatch(fetchAllProductAsync());
   }, [dispatch]);
+  const [filter,setFilter] = useState({});
+  const handleFilter = (e,section,option)=>{
+    const newFilter = {...filter,[section.id]:option.value}
+    setFilter(newFilter);
+    dispatch(fetchProductByFiltersAsync(newFilter));
+  }
+  const handleSort = (e,option)=>{
+    const newFilter = {...filter,_sort:option.sort, _order:option.order};
+    setFilter(newFilter);
+    dispatch(fetchProductByFiltersAsync(newFilter));
+  }
   return (
     <div>
       <div>
@@ -243,7 +252,8 @@ export default function ProductList() {
                       <div className="py-1">
                         {sortOptions.map((option) => (
                           <MenuItem key={option.name}>
-                            <a
+                            <p
+                              onClick={(e)=>handleSort(e,option)}
                               href={option.href}
                               className={classNames(
                                 option.current
@@ -253,7 +263,7 @@ export default function ProductList() {
                               )}
                             >
                               {option.name}
-                            </a>
+                            </p>
                           </MenuItem>
                         ))}
                       </div>
@@ -324,6 +334,7 @@ export default function ProductList() {
                                       id={`filter-${section.id}-${optionIdx}`}
                                       name={`${section.id}[]`}
                                       type="checkbox"
+                                      onChange={(e)=>handleFilter(e,section,option)}
                                       className="col-start-1 row-start-1 appearance-none rounded-sm border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
                                     />
                                     <svg
@@ -382,13 +393,13 @@ export default function ProductList() {
                                 <div className="mt-4 flex justify-between">
                                   <div>
                                     <h3 className="text-sm text-gray-700">
-                                      <a href={product.thumbnail}>
+                                      <div href={product.thumbnail}>
                                         <span
                                           aria-hidden="true"
                                           className="absolute inset-0"
                                         />
                                         {product.title}
-                                      </a>
+                                      </div>
                                     </h3>
                                     <p className="mt-1 text-sm text-gray-500">
                                       <StarIcon className="w-6 h-6 inline"></StarIcon>
