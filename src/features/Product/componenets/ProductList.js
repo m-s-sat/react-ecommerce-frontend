@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -37,26 +37,49 @@ const sortOptions = [
 ];
 const filters = [
   {
-    id: "color",
-    name: "Color",
+    id: "brand",
+    name: "Brands",
     options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
+      { value: "RCH45Q1A", label: "RCH45Q1A", checked: false },
+      { value: "MVCFH27F", label: "MVCFH27F", checked: false },
+      { value: "9EN8WLT2", label: "9EN8WLT2", checked: false },
+      { value: "O5IF1NTA", label: "O5IF1NTA", checked: false },
+      { value: "YUIIIP4W", label: "YUIIIP4W", checked: false },
+      { value: "DZM2JQZE", label: "DZM2JQZE", checked: false },
+      { value: "K71HBCGS", label: "K71HBCGS", checked: false },
+      { value: "E70NB03B", label: "E70NB03B", checked: false },
+      { value: "1NBFK980", label: "1NBFK980", checked: false },
+      { value: "FFKZ6HOF", label: "FFKZ6HOF", checked: false },
+      { value: "4KMDTZWF", label: "4KMDTZWF", checked: false },
+      { value: "LUU95CQP", label: "LUU95CQP", checked: false },
+      { value: "OWPLTZYX", label: "OWPLTZYX", checked: false },
+      { value: "RKHVJ4FE", label: "RKHVJ4FE", checked: false },
+      { value: "7OLTIEVO", label: "7OLTIEVO", checked: false },
+      { value: "QTROUV79", label: "QTROUV79", checked: false },
+      { value: "BWWA2MSO", label: "BWWA2MSO", checked: false },
+      { value: "C3F8QN6O", label: "C3F8QN6O", checked: false },
+      { value: "G5YEHW7B", label: "G5YEHW7B", checked: false },
+      { value: "Q6ZP1UY8", label: "Q6ZP1UY8", checked: false },
+      { value: "6KGF2K6Z", label: "6KGF2K6Z", checked: false },
+      { value: "A6QRCH37", label: "A6QRCH37", checked: false },
+      { value: "YA617RI7", label: "YA617RI7", checked: false },
+      { value: "XNIH1MTA", label: "XNIH1MTA", checked: false },
+      { value: "HU7S7VQ0", label: "HU7S7VQ0", checked: false },
+      { value: "Y4RM3JCB", label: "Y4RM3JCB", checked: false },
+      { value: "BTBNIIOU", label: "BTBNIIOU", checked: false },
+      { value: "VEZMU1EQ", label: "VEZMU1EQ", checked: false },
+      { value: "M2K19S06", label: "M2K19S06", checked: false },
+      { value: "0X3NORB9", label: "0X3NORB9", checked: false },
     ],
   },
   {
     id: "category",
     name: "Category",
     options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
-      { value: "sale", label: "Sale", checked: false },
-      { value: "travel", label: "Travel", checked: true },
-      { value: "organization", label: "Organization", checked: false },
-      { value: "accessories", label: "Accessories", checked: false },
+      { value: "beauty", label: "beauty", checked: false },
+      { value: "fragrances", label: "fragrances", checked: false },
+      { value: "furniture", label: "furniture", checked: false },
+      { value: "groceries", label: "groceries", checked: false },
     ],
   },
   {
@@ -68,7 +91,7 @@ const filters = [
       { value: "12l", label: "12L", checked: false },
       { value: "18l", label: "18L", checked: false },
       { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
+      { value: "40l", label: "40L", checked: false },
     ],
   },
 ];
@@ -79,8 +102,11 @@ function classNames(...classes) {
 
 export default function ProductList() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const products = useSelector(selectAllProducts);
   const dispatch = useDispatch();
+  const products = useSelector(selectAllProducts);
+  useEffect(() => {
+    dispatch(fetchAllProductAsync());
+  }, [dispatch]);
   return (
     <div>
       <div>
@@ -344,7 +370,10 @@ export default function ProductList() {
                         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                           {products.map((product) => (
                             <Link to={"product-details"}>
-                              <div key={product.id} className="group relative border-solid border-2 border-gray-200 p-0.5">
+                              <div
+                                key={product.id}
+                                className="group relative border-solid border-2 border-gray-200 p-0.5"
+                              >
                                 <img
                                   alt={product.title}
                                   src={product.thumbnail}
@@ -369,7 +398,7 @@ export default function ProductList() {
                                     </p>
                                   </div>
                                   <div>
-                                  <p className="text-sm block font-medium text-gray-900">
+                                    <p className="text-sm block font-medium text-gray-900">
                                       $
                                       {Math.round(
                                         product.price *
