@@ -10,6 +10,7 @@ export function fetchAllProduct() {
 }
 
 export function fetchProductByFilters(filter){
+  // TODO : on server we will support multi value
   let querryString = '';
   for(let key in filter){
     querryString+=`${key}=${filter[key]}&`
