@@ -9,10 +9,11 @@ export function fetchAllProduct() {
   });
 }
 
-export function fetchProductByFilters(filter,sort){
+export function fetchProductByFilters(filter,sort,pagination){
   // TODO : on server we will support multi value
   // filter = {"category : ["smartphone","laptops"};
   // sort = {_sort:"price",_order:"asc"};
+  // pagination = {_page:1,_limit:10}
   let querryString = '';
   for(let key in filter){
     const categoryValues  = filter[key];
@@ -24,8 +25,13 @@ export function fetchProductByFilters(filter,sort){
   for(let key in sort){
     querryString += `${key}=${sort[key]}&`;
   }
+  for(let key in pagination){
+    querryString += `${key}=${pagination[key]}&`;
+  }
   return new Promise (async(resolve)=>{
-    const data = await axios.get(`http://localhost:8080/products?`+querryString)
-    resolve(data);
+    const response = await fetch(`http://localhost:8080/products?`+querryString)
+    const data = await response.json();
+    const totalItems = await response.headers.get('X-Total-Count');
+    resolve({data:{products:data,totalItems:+totalItems}});
   })
 }
