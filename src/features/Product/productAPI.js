@@ -35,3 +35,17 @@ export function fetchProductByFilters(filter,sort,pagination){
     resolve({data:{products:data,totalItems:+totalItems}});
   })
 }
+
+export function fetchAllCategories(){
+  return new Promise (async (resolve)=>{
+    const data = await axios.get("http://localhost:8080/category")
+    resolve(data);
+  })
+}
+
+export function fetchAllBrands(){
+  return new Promise(async (resolve)=>{
+    const data = await axios.get("http://localhost:8080/brands");
+    resolve(data);
+  })
+}

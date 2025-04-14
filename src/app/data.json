@@ -1719,5 +1719,179 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Kiwi/thumbnail.png"
     }
+  ],
+  "brands": [
+    {
+      "value": "RCH45Q1A",
+      "label": "RCH45Q1A",
+      "checked": false
+    },
+    {
+      "value": "MVCFH27F",
+      "label": "MVCFH27F",
+      "checked": false
+    },
+    {
+      "value": "9EN8WLT2",
+      "label": "9EN8WLT2",
+      "checked": false
+    },
+    {
+      "value": "O5IF1NTA",
+      "label": "O5IF1NTA",
+      "checked": false
+    },
+    {
+      "value": "YUIIIP4W",
+      "label": "YUIIIP4W",
+      "checked": false
+    },
+    {
+      "value": "DZM2JQZE",
+      "label": "DZM2JQZE",
+      "checked": false
+    },
+    {
+      "value": "K71HBCGS",
+      "label": "K71HBCGS",
+      "checked": false
+    },
+    {
+      "value": "E70NB03B",
+      "label": "E70NB03B",
+      "checked": false
+    },
+    {
+      "value": "1NBFK980",
+      "label": "1NBFK980",
+      "checked": false
+    },
+    {
+      "value": "FFKZ6HOF",
+      "label": "FFKZ6HOF",
+      "checked": false
+    },
+    {
+      "value": "4KMDTZWF",
+      "label": "4KMDTZWF",
+      "checked": false
+    },
+    {
+      "value": "LUU95CQP",
+      "label": "LUU95CQP",
+      "checked": false
+    },
+    {
+      "value": "OWPLTZYX",
+      "label": "OWPLTZYX",
+      "checked": false
+    },
+    {
+      "value": "RKHVJ4FE",
+      "label": "RKHVJ4FE",
+      "checked": false
+    },
+    {
+      "value": "7OLTIEVO",
+      "label": "7OLTIEVO",
+      "checked": false
+    },
+    {
+      "value": "QTROUV79",
+      "label": "QTROUV79",
+      "checked": false
+    },
+    {
+      "value": "BWWA2MSO",
+      "label": "BWWA2MSO",
+      "checked": false
+    },
+    {
+      "value": "C3F8QN6O",
+      "label": "C3F8QN6O",
+      "checked": false
+    },
+    {
+      "value": "G5YEHW7B",
+      "label": "G5YEHW7B",
+      "checked": false
+    },
+    {
+      "value": "Q6ZP1UY8",
+      "label": "Q6ZP1UY8",
+      "checked": false
+    },
+    {
+      "value": "6KGF2K6Z",
+      "label": "6KGF2K6Z",
+      "checked": false
+    },
+    {
+      "value": "A6QRCH37",
+      "label": "A6QRCH37",
+      "checked": false
+    },
+    {
+      "value": "YA617RI7",
+      "label": "YA617RI7",
+      "checked": false
+    },
+    {
+      "value": "XNIH1MTA",
+      "label": "XNIH1MTA",
+      "checked": false
+    },
+    {
+      "value": "HU7S7VQ0",
+      "label": "HU7S7VQ0",
+      "checked": false
+    },
+    {
+      "value": "Y4RM3JCB",
+      "label": "Y4RM3JCB",
+      "checked": false
+    },
+    {
+      "value": "BTBNIIOU",
+      "label": "BTBNIIOU",
+      "checked": false
+    },
+    {
+      "value": "VEZMU1EQ",
+      "label": "VEZMU1EQ",
+      "checked": false
+    },
+    {
+      "value": "M2K19S06",
+      "label": "M2K19S06",
+      "checked": false
+    },
+    {
+      "value": "0X3NORB9",
+      "label": "0X3NORB9",
+      "checked": false
+    }
+  ],
+  "category": [
+    {
+      "value": "beauty",
+      "label": "beauty",
+      "checked": false
+    },
+    {
+      "value": "fragrances",
+      "label": "fragrances",
+      "checked": false
+    },
+    {
+      "value": "furniture",
+      "label": "furniture",
+      "checked": false
+    },
+    {
+      "value": "groceries",
+      "label": "groceries",
+      "checked": false
+    }
   ]
 }
