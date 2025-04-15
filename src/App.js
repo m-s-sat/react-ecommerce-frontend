@@ -38,6 +38,10 @@ const router = createBrowserRouter([
   {
     path:'/product-details',
     element:(<ProductDetailsPage></ProductDetailsPage>)
+  },
+  {
+    path: '/product-details/:id',
+    element: <ProductDetailsPage></ProductDetailsPage>
   }
 ]);
 
