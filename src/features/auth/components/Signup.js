@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { increment, incrementAsync, selectCount } from "../authSlice";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, Navigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { createUserAsync, selectLoggedInUser } from "../authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Signup() {
-  const count = useSelector(selectCount);
+  const {register, handleSubmit, watch, formState: {errors} } = useForm();
   const dispatch = useDispatch();
+  const user = useSelector(selectLoggedInUser);
   return (
     <>
+      {user && <Navigate to={"/"} replace={true}></Navigate>}
       {/*
         This example requires updating your template:
 
@@ -29,7 +32,9 @@ export default function Signup() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form noValidate className="space-y-6" onSubmit={handleSubmit((data)=>{
+            dispatch(createUserAsync({email:data.email, password:data.password}));
+          })}> 
             <div>
               <label
                 htmlFor="email"
@@ -40,12 +45,14 @@ export default function Signup() {
               <div className="mt-2">
                 <input
                   id="email"
-                  name="email"
+                  {...register("email",{required:"email is required", pattern: {
+                    value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
+                    message: 'email is not valid'
+                  }})}
                   type="email"
-                  required
-                  autoComplete="email"
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                {errors.email && <p className="text-red-500">{errors.email.message}</p>}
               </div>
             </div>
 
@@ -69,11 +76,14 @@ export default function Signup() {
               <div className="mt-2">
                 <input
                   id="confirm-password"
-                  name="confirm-password"
+                  {...register("password",{required:"password is required", pattern:{
+                    value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm,
+                    message: `- at least 8 characters\n- must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number\n- Can contain special character`
+                  }})}
                   type="password"
-                  required
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                {errors.password && <p className="text-red-500">{errors.password.message}</p>}
               </div>
               <div className="flex items-center justify-between">
                 <label
@@ -85,12 +95,12 @@ export default function Signup() {
               </div>
               <div className="mt-2">
                 <input
-                  id="confirm-password"
-                  name="confirm-password"
+                  id="confirmPassword"
+                  {...register("confirmPassword",{required:"confirm password required", validate: (value, formValues)=> value===formValues.password || 'password is not matching'})}
                   type="password"
-                  required
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                {errors.confirmPassword && <p className="text-red-500">{errors.confirmPassword.message}</p>}
               </div>
             </div>
 

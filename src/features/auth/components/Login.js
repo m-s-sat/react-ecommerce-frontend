@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
-import {
-  increment,
-  incrementAsync,
-  selectCount,
-} from '../authSlice';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
+import { checkUserAsync, selectError, selectLoggedInUser } from '../authSlice';
 
 export default function Login() {
-
+  const {register, handleSubmit, formState:{errors}} = useForm();
+  const dispatch = useDispatch();
+  const error = useSelector(selectError);
+  const user = useSelector(selectLoggedInUser);
   return (
     <>
+      {user && <Navigate to={"/"} replace={true}></Navigate>}
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
@@ -23,7 +25,10 @@ export default function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form noValidate onSubmit={handleSubmit((data)=>{
+            dispatch(checkUserAsync({email:data.email,password:data.password}))
+            console.log(data)
+          })} className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm/6 font-medium text-gray-900">
                 Email address
@@ -31,12 +36,14 @@ export default function Login() {
               <div className="mt-2">
                 <input
                   id="email"
-                  name="email"
                   type="email"
-                  required
-                  autoComplete="email"
+                  {...register("email",{required:"email is required", pattern: {
+                    value: /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/gi,
+                    message: 'email is not valid'
+                  }})}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                {errors.email && (<p className='text-red-500'>{errors.email.message}</p>)}
               </div>
             </div>
 
@@ -56,10 +63,10 @@ export default function Login() {
                   id="password"
                   name="password"
                   type="password"
-                  required
-                  autoComplete="current-password"
+                  {...register("password",{required:"password is required"})}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 />
+                {error && (<p className='text-red-500'>{error.message}</p>)}
               </div>
             </div>
 
