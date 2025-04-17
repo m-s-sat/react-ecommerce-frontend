@@ -2007,144 +2007,166 @@
   ],
   "users": [
     {
-      "id": "7c59",
+      "id": "cc11",
       "email": "satyarthimrinal2006@gmail.com",
-      "password": "Mrin@!2005"
+      "password": "Mrin@!2005",
+      "addresses": [
+        {
+          "fullName": "Mrinal",
+          "orderedEmail": "satyarthimrinal2006@gmail.com",
+          "number": "07645054550",
+          "country": "India",
+          "streetAddress": "IIT Patna",
+          "city": "Patna",
+          "region": "Bihar",
+          "pinCode": "801106"
+        },
+        {
+          "fullName": "Mrinal Satyarthi",
+          "orderedEmail": "abc@gmail.com",
+          "number": "8743215468",
+          "country": "India",
+          "streetAddress": "Banglore",
+          "city": "Banglore",
+          "region": "Karanatka",
+          "pinCode": "876321"
+        }
+      ]
     },
     {
-      "id": "7bbb",
+      "id": "c6cb",
       "email": "mrinalsatyarthi2005@gmail.com",
-      "password": "Mrin@!$@ty@rthi2005"
+      "password": "Mrin@!2005",
+      "addresses": []
     }
   ],
   "cart": [
     {
-      "id": "d2a0",
-      "title": "Calvin Klein CK One",
-      "description": "CK One by Calvin Klein is a classic unisex fragrance, known for its fresh and clean scent. It's a versatile fragrance suitable for everyday wear.",
-      "category": "fragrances",
-      "price": 49.99,
-      "discountPercentage": 0.32,
-      "rating": 4.85,
-      "stock": 17,
+      "id": "bedd",
+      "title": "Essence Mascara Lash Princess",
+      "description": "The Essence Mascara Lash Princess is a popular mascara known for its volumizing and lengthening effects. Achieve dramatic lashes with this long-lasting and cruelty-free formula.",
+      "category": "beauty",
+      "price": 9.99,
+      "discountPercentage": 7.17,
+      "rating": 4.94,
+      "stock": 5,
       "tags": [
-        "fragrances",
-        "perfumes"
+        "beauty",
+        "mascara"
       ],
-      "brand": "Calvin Klein",
-      "sku": "DZM2JQZE",
-      "weight": 5,
+      "brand": "Essence",
+      "sku": "RCH45Q1A",
+      "weight": 2,
       "dimensions": {
-        "width": 11.53,
-        "height": 14.44,
-        "depth": 6.81
+        "width": 23.17,
+        "height": 14.43,
+        "depth": 28.01
       },
-      "warrantyInformation": "5 year warranty",
-      "shippingInformation": "Ships overnight",
-      "availabilityStatus": "In Stock",
+      "warrantyInformation": "1 month warranty",
+      "shippingInformation": "Ships in 1 month",
+      "availabilityStatus": "Low Stock",
       "reviews": [
         {
+          "rating": 2,
+          "comment": "Very unhappy with my purchase!",
+          "date": "2024-05-23T08:56:21.618Z",
+          "reviewerName": "John Doe",
+          "reviewerEmail": "john.doe@x.dummyjson.com"
+        },
+        {
+          "rating": 2,
+          "comment": "Not as described!",
+          "date": "2024-05-23T08:56:21.618Z",
+          "reviewerName": "Nolan Gonzalez",
+          "reviewerEmail": "nolan.gonzalez@x.dummyjson.com"
+        },
+        {
           "rating": 5,
-          "comment": "Great value for money!",
-          "date": "2024-05-23T08:56:21.619Z",
-          "reviewerName": "Sophia Brown",
-          "reviewerEmail": "sophia.brown@x.dummyjson.com"
-        },
-        {
-          "rating": 3,
-          "comment": "Very disappointed!",
-          "date": "2024-05-23T08:56:21.619Z",
-          "reviewerName": "Madison Collins",
-          "reviewerEmail": "madison.collins@x.dummyjson.com"
-        },
-        {
-          "rating": 1,
-          "comment": "Poor quality!",
-          "date": "2024-05-23T08:56:21.619Z",
-          "reviewerName": "Maya Reed",
-          "reviewerEmail": "maya.reed@x.dummyjson.com"
+          "comment": "Very satisfied!",
+          "date": "2024-05-23T08:56:21.618Z",
+          "reviewerName": "Scarlett Wright",
+          "reviewerEmail": "scarlett.wright@x.dummyjson.com"
         }
       ],
-      "returnPolicy": "No return policy",
-      "minimumOrderQuantity": 20,
+      "returnPolicy": "30 days return policy",
+      "minimumOrderQuantity": 24,
       "meta": {
-        "createdAt": "2024-05-23T08:56:21.619Z",
-        "updatedAt": "2024-05-23T08:56:21.619Z",
-        "barcode": "2210136215089",
+        "createdAt": "2024-05-23T08:56:21.618Z",
+        "updatedAt": "2024-05-23T08:56:21.618Z",
+        "barcode": "9164035109868",
         "qrCode": "https://assets.dummyjson.com/public/qr-code.png"
       },
       "images": [
-        "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/1.png",
-        "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/2.png",
-        "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/3.png"
+        "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
       ],
-      "thumbnail": "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/thumbnail.png",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
       "quantity": 1,
-      "userID": "7c59"
+      "userID": "c6cb"
     },
     {
-      "id": "e1b2",
-      "title": "Calvin Klein CK One",
-      "description": "CK One by Calvin Klein is a classic unisex fragrance, known for its fresh and clean scent. It's a versatile fragrance suitable for everyday wear.",
-      "category": "fragrances",
-      "price": 49.99,
-      "discountPercentage": 0.32,
-      "rating": 4.85,
-      "stock": 17,
+      "id": "b709",
+      "title": "Red Lipstick",
+      "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+      "category": "beauty",
+      "price": 12.99,
+      "discountPercentage": 19.03,
+      "rating": 2.51,
+      "stock": 68,
       "tags": [
-        "fragrances",
-        "perfumes"
+        "beauty",
+        "lipstick"
       ],
-      "brand": "Calvin Klein",
-      "sku": "DZM2JQZE",
+      "brand": "Chic Cosmetics",
+      "sku": "O5IF1NTA",
       "weight": 5,
       "dimensions": {
-        "width": 11.53,
-        "height": 14.44,
-        "depth": 6.81
+        "width": 14.37,
+        "height": 13.94,
+        "depth": 14.6
       },
-      "warrantyInformation": "5 year warranty",
-      "shippingInformation": "Ships overnight",
+      "warrantyInformation": "Lifetime warranty",
+      "shippingInformation": "Ships in 2 weeks",
       "availabilityStatus": "In Stock",
       "reviews": [
         {
           "rating": 5,
-          "comment": "Great value for money!",
+          "comment": "Great product!",
           "date": "2024-05-23T08:56:21.619Z",
-          "reviewerName": "Sophia Brown",
-          "reviewerEmail": "sophia.brown@x.dummyjson.com"
+          "reviewerName": "Leo Rivera",
+          "reviewerEmail": "leo.rivera@x.dummyjson.com"
         },
         {
-          "rating": 3,
-          "comment": "Very disappointed!",
+          "rating": 4,
+          "comment": "Very pleased!",
           "date": "2024-05-23T08:56:21.619Z",
-          "reviewerName": "Madison Collins",
-          "reviewerEmail": "madison.collins@x.dummyjson.com"
+          "reviewerName": "Oscar Powers",
+          "reviewerEmail": "oscar.powers@x.dummyjson.com"
         },
         {
-          "rating": 1,
-          "comment": "Poor quality!",
+          "rating": 5,
+          "comment": "Very pleased!",
           "date": "2024-05-23T08:56:21.619Z",
-          "reviewerName": "Maya Reed",
-          "reviewerEmail": "maya.reed@x.dummyjson.com"
+          "reviewerName": "Carter Rivera",
+          "reviewerEmail": "carter.rivera@x.dummyjson.com"
         }
       ],
-      "returnPolicy": "No return policy",
-      "minimumOrderQuantity": 20,
+      "returnPolicy": "90 days return policy",
+      "minimumOrderQuantity": 6,
       "meta": {
         "createdAt": "2024-05-23T08:56:21.619Z",
         "updatedAt": "2024-05-23T08:56:21.619Z",
-        "barcode": "2210136215089",
+        "barcode": "9444582199406",
         "qrCode": "https://assets.dummyjson.com/public/qr-code.png"
       },
       "images": [
-        "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/1.png",
-        "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/2.png",
-        "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/3.png"
+        "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/1.png"
       ],
-      "thumbnail": "https://cdn.dummyjson.com/products/images/fragrances/Calvin%20Klein%20CK%20One/thumbnail.png",
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/thumbnail.png",
       "quantity": 1,
-      "userID": "7bbb"
+      "userID": "cc11"
     }
+  ],
+  "orders":[
+    
   ]
 }
