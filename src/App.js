@@ -52,6 +52,7 @@ const router = createBrowserRouter([
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(selectLoggedInUser);
+  console.log(user);
   useEffect(()=>{
     if(user){
       dispatch(fetchItemByUserIdAsync(user.id));

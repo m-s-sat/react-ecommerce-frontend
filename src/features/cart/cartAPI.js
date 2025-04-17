@@ -12,9 +12,10 @@ export function addToCart(item){
 
 export function fetchItemsByUserId(userId){
   return new Promise(async(resolve)=>{
-    const response = await fetch('http://localhost:8080/cart?user='+userId);
+    const response = await fetch('http://localhost:8080/cart?userID='+userId);
     const data = await response.json();
     resolve({data});
+    console.log({data});
   })
 }
 

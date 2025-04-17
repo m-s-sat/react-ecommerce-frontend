@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { deleteCartItemAsync, selectCart, updateCartAsync } from "./cartSlice";
 
 export default function Cart() {
@@ -15,9 +15,9 @@ export default function Cart() {
   const handleDelete = (e,product)=>{
     dispatch(deleteCartItemAsync(product));
   }
-  console.log(products);
   return (
     <>
+      {!products.length && <Navigate to={'/'} replace={true}></Navigate>}
       <div className="mx-auto mt-12 max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div className="mt-8">
         <h2 className="text-4xl my-5 font-bold tracking-tight text-gray-900">Cart</h2>
