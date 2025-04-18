@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice";
-import { createOrderAsync } from "../features/orders/orderSlice";
+import { createOrderAsync, selectCurrentOrder} from "../features/orders/orderSlice";
 
 function CheckoutPage() {
   const [open, setOpen] = useState(true);
@@ -29,6 +29,7 @@ function CheckoutPage() {
   const user = useSelector(selectLoggedInUser);
   const [selectedAddress, setSelecetedAdress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState('cash');
+  const currentOrder = useSelector(selectCurrentOrder);
   const handlePayment = (e)=>{
     setPaymentMethod(e.target.value);
   }
@@ -36,7 +37,7 @@ function CheckoutPage() {
     setSelecetedAdress(user.addresses[e.target.value]);
   }
   const handleOrder = (e)=>{
-    const order = {items:products,totalAmount,totalItems,user,paymentMethod,selectedAddress};
+    const order = {items:products,totalAmount,totalItems,user,paymentMethod,selectedAddress,status:'pending'};
     dispatch(createOrderAsync(order))
     // TODO : redirect to order-success page
     // TODO : clear cart after order
@@ -45,6 +46,7 @@ function CheckoutPage() {
   return (
     <>
       {!products.length && <Navigate to={'/'} replace={true}></Navigate>}
+      {currentOrder && <Navigate to={`/order-success/${currentOrder.id}`} replace={true}></Navigate>}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
