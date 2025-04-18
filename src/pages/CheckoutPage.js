@@ -8,8 +8,8 @@ import {
 } from "../features/cart/cartSlice";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { error } from "ajv/dist/vocabularies/applicator/dependencies";
 import { selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice";
+import { createOrderAsync } from "../features/orders/orderSlice";
 
 function CheckoutPage() {
   const [open, setOpen] = useState(true);
@@ -36,7 +36,11 @@ function CheckoutPage() {
     setSelecetedAdress(user.addresses[e.target.value]);
   }
   const handleOrder = (e)=>{
-    
+    const order = {items:products,totalAmount,totalItems,user,paymentMethod,selectedAddress};
+    dispatch(createOrderAsync(order))
+    // TODO : redirect to order-success page
+    // TODO : clear cart after order
+    // TODO : on server change the stock number of items
   }
   return (
     <>
@@ -92,7 +96,7 @@ function CheckoutPage() {
                           autoComplete="email"
                           className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                         />
-                        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+                        {errors.orderedEmail && <p className="text-red-500">{errors.orderedEmail.message}</p>}
                       </div>
                     </div>
                     <div className="sm:col-span-4">

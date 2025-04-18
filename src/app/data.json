@@ -2166,7 +2166,113 @@
       "userID": "cc11"
     }
   ],
-  "orders":[
-    
+  "orders": [
+    {
+      "id": "7e87",
+      "items": [
+        {
+          "id": "b709",
+          "title": "Red Lipstick",
+          "description": "The Red Lipstick is a classic and bold choice for adding a pop of color to your lips. With a creamy and pigmented formula, it provides a vibrant and long-lasting finish.",
+          "category": "beauty",
+          "price": 12.99,
+          "discountPercentage": 19.03,
+          "rating": 2.51,
+          "stock": 68,
+          "tags": [
+            "beauty",
+            "lipstick"
+          ],
+          "brand": "Chic Cosmetics",
+          "sku": "O5IF1NTA",
+          "weight": 5,
+          "dimensions": {
+            "width": 14.37,
+            "height": 13.94,
+            "depth": 14.6
+          },
+          "warrantyInformation": "Lifetime warranty",
+          "shippingInformation": "Ships in 2 weeks",
+          "availabilityStatus": "In Stock",
+          "reviews": [
+            {
+              "rating": 5,
+              "comment": "Great product!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Leo Rivera",
+              "reviewerEmail": "leo.rivera@x.dummyjson.com"
+            },
+            {
+              "rating": 4,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Oscar Powers",
+              "reviewerEmail": "oscar.powers@x.dummyjson.com"
+            },
+            {
+              "rating": 5,
+              "comment": "Very pleased!",
+              "date": "2024-05-23T08:56:21.619Z",
+              "reviewerName": "Carter Rivera",
+              "reviewerEmail": "carter.rivera@x.dummyjson.com"
+            }
+          ],
+          "returnPolicy": "90 days return policy",
+          "minimumOrderQuantity": 6,
+          "meta": {
+            "createdAt": "2024-05-23T08:56:21.619Z",
+            "updatedAt": "2024-05-23T08:56:21.619Z",
+            "barcode": "9444582199406",
+            "qrCode": "https://assets.dummyjson.com/public/qr-code.png"
+          },
+          "images": [
+            "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/1.png"
+          ],
+          "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Red%20Lipstick/thumbnail.png",
+          "quantity": 1,
+          "userID": "cc11"
+        }
+      ],
+      "totalAmount": 13,
+      "totalItems": 1,
+      "user": {
+        "id": "cc11",
+        "email": "satyarthimrinal2006@gmail.com",
+        "password": "Mrin@!2005",
+        "addresses": [
+          {
+            "fullName": "Mrinal",
+            "orderedEmail": "satyarthimrinal2006@gmail.com",
+            "number": "07645054550",
+            "country": "India",
+            "streetAddress": "IIT Patna",
+            "city": "Patna",
+            "region": "Bihar",
+            "pinCode": "801106"
+          },
+          {
+            "fullName": "Mrinal Satyarthi",
+            "orderedEmail": "abc@gmail.com",
+            "number": "8743215468",
+            "country": "India",
+            "streetAddress": "Banglore",
+            "city": "Banglore",
+            "region": "Karanatka",
+            "pinCode": "876321"
+          }
+        ]
+      },
+      "paymentMethod": "cash",
+      "selectedAddress": {
+        "fullName": "Mrinal",
+        "orderedEmail": "satyarthimrinal2006@gmail.com",
+        "number": "07645054550",
+        "country": "India",
+        "streetAddress": "IIT Patna",
+        "city": "Patna",
+        "region": "Bihar",
+        "pinCode": "801106"
+      }
+    }
   ]
 }
