@@ -25,7 +25,7 @@ function CheckoutPage() {
   const handleDelete = (e, product) => {
     dispatch(deleteCartItemAsync(product));
   };
-  const {register,handleSubmit,formState:{errors}} = useForm();
+  const {register,handleSubmit,formState:{errors},reset} = useForm();
   const user = useSelector(selectLoggedInUser);
   const [selectedAddress, setSelecetedAdress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState('cash');
@@ -52,6 +52,7 @@ function CheckoutPage() {
           <div className="lg:col-span-3">
             <form noValidate onSubmit={handleSubmit((data)=>{
               dispatch(updateUserAsync({...user,addresses:[...user.addresses,data]}))
+              reset();
             })} className="bg-white px-5 mt-12 py-10">
               <div className="space-y-12">
                 <div className="border-b border-gray-900/10 pb-12">
