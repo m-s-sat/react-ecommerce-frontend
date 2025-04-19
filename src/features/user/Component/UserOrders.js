@@ -4,11 +4,12 @@ import { selectLoggedInUser } from "../../auth/authSlice";
 import {
   fetchLoggedInUserOrderAsync,
   selectLoggedInUserOrder,
+  selectUserInfo,
 } from "../userSlice";
 
 export default function UserOrders() {
   const dispatch = useDispatch();
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
   const orders = useSelector(selectLoggedInUserOrder);
   useEffect(() => {
     dispatch(fetchLoggedInUserOrderAsync(user.id));

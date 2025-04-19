@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice";
 import { createOrderAsync, selectCurrentOrder} from "../features/orders/orderSlice";
+import { selectUserInfo } from "../features/user/userSlice";
 
 function CheckoutPage() {
   const [open, setOpen] = useState(true);
@@ -26,7 +27,7 @@ function CheckoutPage() {
     dispatch(deleteCartItemAsync(product));
   };
   const {register,handleSubmit,formState:{errors},reset} = useForm();
-  const user = useSelector(selectLoggedInUser);
+  const user = useSelector(selectUserInfo);
   const [selectedAddress, setSelecetedAdress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState('cash');
   const currentOrder = useSelector(selectCurrentOrder);
