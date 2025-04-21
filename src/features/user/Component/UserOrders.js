@@ -11,6 +11,8 @@ export default function UserOrders() {
   const dispatch = useDispatch();
   const user = useSelector(selectUserInfo);
   const orders = useSelector(selectLoggedInUserOrder);
+  console.log(orders);
+  console.log(user);
   useEffect(() => {
     dispatch(fetchLoggedInUserOrderAsync(user.id));
   }, [dispatch]);
