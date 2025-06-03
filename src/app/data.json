@@ -8,12 +8,12 @@
       "price": 9.99,
       "discountPercentage": 7.17,
       "rating": 4.94,
-      "stock": 5,
+      "stock": null,
       "tags": [
         "beauty",
         "mascara"
       ],
-      "brand": "Essence",
+      "brand": "BWWA2MSO",
       "sku": "RCH45Q1A",
       "weight": 2,
       "dimensions": {
@@ -56,9 +56,12 @@
         "qrCode": "https://assets.dummyjson.com/public/qr-code.png"
       },
       "images": [
-        "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png"
+        "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/1.png",
+        "image2",
+        "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
       ],
-      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
+      "deleted": true
     },
     {
       "id": "2",
@@ -118,7 +121,8 @@
       "images": [
         "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/1.png"
       ],
-      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/thumbnail.png"
+      "thumbnail": "https://cdn.dummyjson.com/products/images/beauty/Eyeshadow%20Palette%20with%20Mirror/thumbnail.png",
+      "deleted": true
     },
     {
       "id": "3",
@@ -1795,6 +1799,22 @@
         "https://cdn.dummyjson.com/products/images/groceries/Kiwi/1.png"
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Kiwi/thumbnail.png"
+    },
+    {
+      "id": "fb1f",
+      "title": "lenovo yoga slim 6",
+      "description": "this laptop is best for the professionals works",
+      "brand": "RCH45Q1A",
+      "category": "beauty",
+      "prince": "8300",
+      "discountPercentage": "12",
+      "stcok": "12",
+      "thumbnail": "Thumbnail",
+      "images": [
+        "Image 1",
+        "Image 2",
+        "Thumbnail"
+      ]
     }
   ],
   "brands": [
@@ -2010,6 +2030,7 @@
       "id": "cc11",
       "email": "satyarthimrinal2006@gmail.com",
       "password": "Mrin@!2005",
+      "role": "user",
       "addresses": [
         {
           "fullName": "Mrinal Satyarthi",
@@ -2077,6 +2098,7 @@
       "id": "c6cb",
       "email": "mrinalsatyarthi2005@gmail.com",
       "password": "Mrin@!2005",
+      "role": "user",
       "addresses": [
         {
           "fullName": "Mrinal",
@@ -2095,6 +2117,13 @@
       "email": "hgdgweiu@gmail.com",
       "password": "Mrin@!2005",
       "addresses": []
+    },
+    {
+      "id": "963f",
+      "email": "admin@gmail.com",
+      "password": "Admin@1234",
+      "addresses": [],
+      "role": "admin"
     }
   ],
   "cart": [],
