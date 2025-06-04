@@ -465,10 +465,16 @@ function Productgrid({ products }) {
                         </p>
                       </div>
                     </div>
+                    {product.deleted===true && <div>
+                      <p className="text-sm text-red-400">Product Deleted</p>
+                    </div>}
                   </div>
                 </Link>
                 <div>
-                  <Link to={`/admin/product-form/edit/${product.id}`} className="my-5 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  <Link
+                    to={`/admin/product-form/edit/${product.id}`}
+                    className="my-5 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
                     Edit Product
                   </Link>
                 </div>

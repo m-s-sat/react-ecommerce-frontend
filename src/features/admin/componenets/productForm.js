@@ -46,8 +46,8 @@ function ProductForm() {
       dispatch(clearSelectedProduct());
     }
   }, [params.id, dispatch]);
-  function handleDelete(){
-    const product = {...selectProduct};
+  function handleDelete() {
+    const product = { ...selectProduct };
     product.deleted = true;
     dispatch(updateProductAsync(product));
   }
@@ -132,7 +132,7 @@ function ProductForm() {
                     --Choose Brand--
                   </option>
                   {brands.map((brand) => (
-                    <option value={`${brand.value}`}>{brand.label}</option>
+                    <option value={`${brand.valuel}`}>{brand.label}</option>
                   ))}
                 </select>
               </div>

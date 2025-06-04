@@ -14,6 +14,7 @@ export function fetchProductByFilters(filter,sort,pagination){
   // filter = {"category : ["smartphone","laptops"};
   // sort = {_sort:"price",_order:"asc"};
   // pagination = {_page:1,_limit:10}
+  // TODO: Server will filetered the deleted product in case of non-admins 
   let querryString = '';
   for(let key in filter){
     const categoryValues  = filter[key];
