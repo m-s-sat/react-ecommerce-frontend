@@ -30,6 +30,7 @@ const navigation = [
   { name: "Calendar", href: "#", current: false, user: true },
   { name: "Reports", href: "#", current: false, user: true },
   { name: "Admin", href: "/admin", admin: true },
+  { name: "Orders", href: "/admin/orders", admin: true },
 ];
 const userNavigation = [
   { name: "My Profile", link: "/profile" },
