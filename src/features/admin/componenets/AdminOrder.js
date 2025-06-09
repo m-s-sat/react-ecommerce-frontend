@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { discountedPrice, ITEMS_PER_PAGE } from "../../../app/constants";
-import { XMarkIcon, EyeIcon, PencilIcon } from "@heroicons/react/16/solid";
+import { EyeIcon, PencilIcon } from "@heroicons/react/16/solid";
 import {
   fetchAllOrdersAsync,
   orderUpdateAsync,
   selectOrders,
   selectTotalOrders,
 } from "../../orders/orderSlice";
+import Pagination from "../../common/Pagination";
 
 export default function AdminOrder() {
   const [editableOrderId, setEditableOrderId] = useState(-1);
@@ -129,6 +130,13 @@ export default function AdminOrder() {
             </div>
           </div>
         </div>
+        {/* <Pagination
+          page={page}
+          setPage={setPage}
+          handlePage={handlePage}
+          totalItems={totalOrders}
+          sort={sort}
+        ></Pagination> */}
       </div>
     </>
   );
