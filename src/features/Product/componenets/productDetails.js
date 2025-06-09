@@ -4,7 +4,7 @@ import { Radio, RadioGroup } from '@headlessui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProductByIdAsync, selectProductById } from '../ProductSlice'
 import { useParams } from 'react-router-dom'
-import { addToCartAsync } from '../../cart/cartSlice'
+import { addToCartAsync, selectCart } from '../../cart/cartSlice'
 import { selectLoggedInUser } from '../../auth/authSlice'
 
 const colors = [
@@ -34,15 +34,21 @@ function ProductDetails() {
   const dispatch = useDispatch();
   const params = useParams();
   const user = useSelector(selectLoggedInUser);
+  const items = useSelector(selectCart);
   // TODDO : In server data we will add color, sizes
   useEffect(()=>{
     dispatch(fetchProductByIdAsync(params.id));
   },[dispatch,params.id]);
   function handleCart(e){
     e.preventDefault();
-    const newItem = {...product,quantity:1,userID:user.id};
-    delete newItem["id"];
-    dispatch(addToCartAsync(newItem));
+    if(items.findIndex(item=>item.productId===product.id)<0){
+      const newItem = {...product,productId:product.id,quantity:1,userID:user.id};
+      delete newItem["id"];
+      dispatch(addToCartAsync(newItem));
+    }
+    else{
+      console.log('already added');
+    }
   }
   return (
     <div className="bg-white">
@@ -216,7 +222,7 @@ function ProductDetails() {
               </div>
 
               <button
-              onClick={handleCart}
+                onClick={handleCart}
                 type="submit"
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:outline-hidden"
               >
