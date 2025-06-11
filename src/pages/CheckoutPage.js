@@ -15,12 +15,12 @@ function CheckoutPage() {
   const [open, setOpen] = useState(true);
   const products = useSelector(selectCart);
   const totalAmount = Math.ceil(
-    products.reduce((amount, item) => item.price * item.quantity + amount, 0)
+    products.reduce((amount, item) => item.product.price * item.quantity + amount, 0)
   );
   const totalItems = products.reduce((total, item) => item.quantity + total, 0);
   const dispatch = useDispatch();
   const handleQuantity = (e, product) => {
-    dispatch(updateCartAsync({ ...product, quantity: +e.target.value }));
+    dispatch(updateCartAsync({id:product.id, quantity: +e.target.value }));
   };
   const handleDelete = (e, product) => {
     dispatch(deleteCartItemAsync(product));
@@ -335,8 +335,8 @@ function CheckoutPage() {
                       <li key={product.id} className="flex py-6">
                         <div className="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
                           <img
-                            alt={product.title}
-                            src={product.thumbnail}
+                            alt={product.product.title}
+                            src={product.product.thumbnail}
                             className="size-full object-cover"
                           />
                         </div>
@@ -345,12 +345,12 @@ function CheckoutPage() {
                           <div>
                             <div className="flex justify-between text-base font-medium text-gray-900">
                               <h3>
-                                <a href={product.href}>{product.title}</a>
+                                <a href={product.product.href}>{product.product.title}</a>
                               </h3>
-                              <p className="ml-4">${product.price}</p>
+                              <p className="ml-4">${product.product.price}</p>
                             </div>
                             <p className="mt-1 text-sm text-gray-500">
-                              {product.color}
+                              {product.product.color}
                             </p>
                           </div>
                           <div className="flex flex-1 items-end justify-between text-sm">
