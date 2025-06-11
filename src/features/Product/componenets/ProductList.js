@@ -94,8 +94,8 @@ export default function ProductList() {
   };
   useEffect(() => {
     const pagination = {
-      _start: (page - 1) * ITEMS_PER_PAGE,
-      _end: page * ITEMS_PER_PAGE,
+      _page: page,
+      _limit: ITEMS_PER_PAGE,
     };
     dispatch(fetchProductByFiltersAsync({ filter, sort, pagination }));
   }, [dispatch, filter, sort, page]);
