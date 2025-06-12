@@ -10,7 +10,7 @@ export default function Cart() {
   const totalItems = products.reduce((total,item)=>item.quantity+total,0)
   const dispatch = useDispatch();
   const handleQuantity = (e,product)=>{
-    dispatch(updateCartAsync({id:products.id,quantity:+e.target.value}));
+    dispatch(updateCartAsync({id:product.id,quantity:+e.target.value}));
   }
   const handleDelete = (e,product)=>{
     dispatch(deleteCartItemAsync(product));
@@ -22,7 +22,7 @@ export default function Cart() {
         <div className="mt-8">
         <h2 className="text-4xl my-5 font-bold tracking-tight text-gray-900">Cart</h2>
           <div className="flow-root">
-            <ul role="list" className="-my-6 divide-y divide-gray-200">
+            <ul className="-my-6 divide-y divide-gray-200">
               {products.map((product) => (
                 <li key={product.product.id} className="flex py-6">
                   <div className="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
@@ -32,7 +32,6 @@ export default function Cart() {
                       className="size-full object-cover"
                     />
                   </div>
-
                   <div className="ml-4 flex flex-1 flex-col">
                     <div>
                       <div className="flex justify-between text-base font-medium text-gray-900">
@@ -54,7 +53,6 @@ export default function Cart() {
                         <option value={"4"}>4</option>
                         <option value={"5"}>5</option>
                       </select>
-
                       <div className="flex">
                         <button
                           onClick={(e)=>handleDelete(e,product)}
