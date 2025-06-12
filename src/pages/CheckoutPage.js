@@ -8,7 +8,8 @@ import {
 } from "../features/cart/cartSlice";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { selectLoggedInUser, updateUserAsync } from "../features/auth/authSlice";
+import { selectLoggedInUser } from "../features/auth/authSlice";
+import { updateUserAsync } from "../features/user/userSlice";
 import { createOrderAsync, selectCurrentOrder} from "../features/orders/orderSlice";
 
 function CheckoutPage() {

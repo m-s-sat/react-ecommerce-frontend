@@ -7,18 +7,18 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 export default function UserProfile() {
   const dispatch = useDispatch();
-  const user = useSelector(selectUserInfo);
+  const userInfo = useSelector(selectUserInfo);
   const [selecetdEditIndex, setSelectedEditIndex] = useState(-1);
   const [showAddAddressForm, setShowAddAddressForm] = useState(false);
   // TODO : we will add payment section when we work on backend
   const handleEdit = (addressUpdate, index) => {
-    const newUser = { ...user, addresses: [...user.addresses] };
+    const newUser = { ...userInfo, addresses: [...userInfo.addresses] };
     newUser.addresses.splice(index, 1, addressUpdate);
     dispatch(updateUserAsync(newUser));
     setSelectedEditIndex(-1);
   };
   const handleRemove = (e, index) => {
-    const newUser = { ...user, addresses: [...user.addresses] };
+    const newUser = { ...userInfo, addresses: [...userInfo.addresses] };
     newUser.addresses.splice(index, 1);
     dispatch(updateUserAsync(newUser));
   };
@@ -31,7 +31,7 @@ export default function UserProfile() {
   } = useForm();
   const handleEditForm = (index) => {
     setSelectedEditIndex(index);
-    const address = user.addresses[index];
+    const address = userInfo.addresses[index];
     setValue("fullName", address.fullName);
     setValue("orderedEmail", address.orderedEmail);
     setValue("number", address.number);
@@ -42,7 +42,7 @@ export default function UserProfile() {
     setValue("region", address.region);
   };
   const handleAddAddress = (address)=>{
-    const newUser  = {...user,addresses:[...user.addresses,address]};
+    const newUser  = {...userInfo,addresses:[...userInfo.addresses,address]};
     dispatch(updateUserAsync(newUser));
     setShowAddAddressForm(false);
   }
@@ -51,13 +51,13 @@ export default function UserProfile() {
       <div className="mx-auto mt-12 max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div className="mt-8">
           <h2 className="text-4xl my-5 font-bold tracking-tight text-gray-900">
-            Name : {user.name ? user.name : "Guest"}
+            Name : {userInfo.name ? userInfo.name : "Guest"}
           </h2>
           <h3 className="text-1xl my-5 font-bold tracking-tight text-red-900">
-            Email Address : {user.email}
+            Email Address : {userInfo.email}
           </h3>
-          {user.role==='admin' && <h3 className="text-1xl my-5 font-bold tracking-tight text-red-900">
-            Role : {user.role}
+          {userInfo.role==='admin' && <h3 className="text-1xl my-5 font-bold tracking-tight text-red-900">
+            Role : {userInfo.role}
           </h3>}
           <div className="flow-root"></div>
         </div>
@@ -313,7 +313,7 @@ export default function UserProfile() {
         </div>
         <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
           <p className="mt-0.5 text-sm text-gray-500">Your Addresses :</p>
-          {user.addresses.map((address, index) => (
+          {userInfo.addresses.map((address, index) => (
             <div>
               {selecetdEditIndex === index ? (
                 <form

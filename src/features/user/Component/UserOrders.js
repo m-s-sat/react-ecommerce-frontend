@@ -9,13 +9,12 @@ import {
 
 export default function UserOrders() {
   const dispatch = useDispatch();
-  const user = useSelector(selectUserInfo);
+  const userInfo = useSelector(selectUserInfo);
   const orders = useSelector(selectLoggedInUserOrder);
   console.log(orders);
-  console.log(user);
   useEffect(() => {
-    dispatch(fetchLoggedInUserOrderAsync(user.id));
-  }, [dispatch]);
+    dispatch(fetchLoggedInUserOrderAsync(userInfo.id));
+  }, [dispatch, userInfo]);
   return (
     <div>
       {orders.map((order) => (
@@ -30,8 +29,8 @@ export default function UserOrders() {
                   <li key={product.id} className="flex py-6">
                     <div className="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
                       <img
-                        alt={product.title}
-                        src={product.thumbnail}
+                        alt={product.product.title}
+                        src={product.product.thumbnail}
                         className="size-full object-cover"
                       />
                     </div>
@@ -40,12 +39,12 @@ export default function UserOrders() {
                       <div>
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <h3>
-                            <a href={product.href}>{product.title}</a>
+                            <a href={product.product.id}>{product.product.title}</a>
                           </h3>
-                          <p className="ml-4">${product.price}</p>
+                          <p className="ml-4">${product.product.price}</p>
                         </div>
                         <p className="mt-1 text-sm text-gray-500">
-                          {product.color}
+                          {product.product.color}
                         </p>
                       </div>
                       <div className="flex flex-1 items-end justify-between text-sm">
