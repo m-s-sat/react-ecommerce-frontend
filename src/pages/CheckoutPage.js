@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { selectLoggedInUser } from "../features/auth/authSlice";
-import { updateUserAsync } from "../features/user/userSlice";
+import { selectUserInfo, updateUserAsync } from "../features/user/userSlice";
 import { createOrderAsync, selectCurrentOrder} from "../features/orders/orderSlice";
 
 function CheckoutPage() {
@@ -27,7 +27,7 @@ function CheckoutPage() {
     dispatch(deleteCartItemAsync(product));
   };
   const {register,handleSubmit,formState:{errors},reset} = useForm();
-  const user = useSelector(selectLoggedInUser);
+  const userInfo = useSelector(selectUserInfo);
   const [selectedAddress, setSelecetedAdress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState('cash');
   const currentOrder = useSelector(selectCurrentOrder);
@@ -35,10 +35,10 @@ function CheckoutPage() {
     setPaymentMethod(e.target.value);
   }
   const handleChange = (e)=>{
-    setSelecetedAdress(user.addresses[e.target.value]);
+    setSelecetedAdress(userInfo.addresses[e.target.value]);
   }
   const handleOrder = (e)=>{
-    const order = {items:products,totalAmount,totalItems,user:user.id,paymentMethod,selectedAddress,status:'pending'};
+    const order = {items:products,totalAmount,totalItems,user:userInfo.id,paymentMethod,selectedAddress,status:'pending'};
     dispatch(createOrderAsync(order))
     // TODO : redirect to order-success page
     // TODO : clear cart after order
@@ -52,7 +52,7 @@ function CheckoutPage() {
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
           <div className="lg:col-span-3">
             <form noValidate onSubmit={handleSubmit((data)=>{
-              dispatch(updateUserAsync({...user,addresses:[...user.addresses,data]}))
+              dispatch(updateUserAsync({...userInfo,addresses:[...userInfo.addresses,data]}))
               reset();
             })} className="bg-white px-5 mt-12 py-10">
               <div className="space-y-12">
@@ -231,7 +231,7 @@ function CheckoutPage() {
                     Choose from exsisting address
                   </p>
                   <ul role="list" className="divide-y divide-gray-100">
-                    {user.addresses.map((address,index) => (
+                    {userInfo.addresses.map((address,index) => (
                       <li
                         key={index}
                         className="flex justify-between gap-x-6 px-5 py-5 border-solid border-2 border-gray-200"
