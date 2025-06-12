@@ -14,9 +14,7 @@ export function fetchItemsByUserId(userId) {
   return new Promise(async (resolve) => {
     const response = await fetch("http://localhost:8080/cart?user=" + userId);
     const data = await response.json();
-    console.log(userId);
     resolve({ data });
-    console.log({ data });
   });
 }
 

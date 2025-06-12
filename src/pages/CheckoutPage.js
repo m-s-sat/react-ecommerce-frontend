@@ -37,7 +37,7 @@ function CheckoutPage() {
     setSelecetedAdress(user.addresses[e.target.value]);
   }
   const handleOrder = (e)=>{
-    const order = {items:products,totalAmount,totalItems,user,paymentMethod,selectedAddress,status:'pending'};
+    const order = {items:products,totalAmount,totalItems,user:user.id,paymentMethod,selectedAddress,status:'pending'};
     dispatch(createOrderAsync(order))
     // TODO : redirect to order-success page
     // TODO : clear cart after order
