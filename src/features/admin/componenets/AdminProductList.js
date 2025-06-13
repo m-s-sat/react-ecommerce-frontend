@@ -97,7 +97,7 @@ export default function AdminProductList() {
       _start: (page - 1) * ITEMS_PER_PAGE,
       _end: page * ITEMS_PER_PAGE,
     };
-    dispatch(fetchProductByFiltersAsync({ filter, sort, pagination }));
+    dispatch(fetchProductByFiltersAsync({ filter, sort, pagination, admin:true }));
   }, [dispatch, filter, sort, page]);
   useEffect(() => {
     dispatch(fetchAllBrandsAsync());
@@ -464,6 +464,9 @@ function Productgrid({ products }) {
                     </div>
                     {product.deleted===true && <div>
                       <p className="text-sm text-red-400">Product Deleted</p>
+                    </div>}
+                    {product.stock===0 && <div>
+                      <p className="text-sm text-red-400">Out of Stock</p>
                     </div>}
                   </div>
                 </Link>

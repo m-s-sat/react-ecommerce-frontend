@@ -9,7 +9,7 @@ export function fetchAllProduct() {
   });
 }
 
-export function fetchProductByFilters(filter,sort,pagination){
+export function fetchProductByFilters(filter,sort,pagination,admin){
   // TODO : on server we will support multi value
   // filter = {"category : ["smartphone","laptops"};
   // sort = {_sort:"price",_order:"asc"};
@@ -29,6 +29,7 @@ export function fetchProductByFilters(filter,sort,pagination){
   for(let key in pagination){
     querryString += `${key}=${pagination[key]}&`;
   }
+  if(admin) querryString+='admin=true';
   return new Promise (async(resolve)=>{
     const response = await fetch(`http://localhost:8080/products?`+querryString)
     const data = await response.json();
