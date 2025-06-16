@@ -33,7 +33,6 @@ function ProductDetails() {
   const product = useSelector(selectProductById);
   const dispatch = useDispatch();
   const params = useParams();
-  const user = useSelector(selectLoggedInUser);
   const items = useSelector(selectCart);
   // TODDO : In server data we will add color, sizes
   useEffect(()=>{
@@ -42,7 +41,7 @@ function ProductDetails() {
   function handleCart(e){
     e.preventDefault();
     if(items.findIndex(item=>item.product.id===product.id)<0){
-      const newItem = {product:product.id,quantity:1,user:user.id};
+      const newItem = {product:product.id,quantity:1};
       dispatch(addToCartAsync(newItem));
     }
     else{

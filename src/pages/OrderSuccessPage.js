@@ -11,10 +11,10 @@ export function OrderSuccessPage(){
     const user = useSelector(selectLoggedInUser);
     useEffect(()=>{
         // reset cart
-        dispatch(resetCartAsync(user.id));
+        dispatch(resetCartAsync());
         // reset order
         dispatch(resetOrder)
-    },[dispatch,user]);
+    },[dispatch]);
     return (
         <>
         {!params.id && <Navigate to={'/'} replace={true}></Navigate>}

@@ -163,8 +163,8 @@ function App() {
   console.log(user);
   useEffect(() => {
     if (user) {
-      dispatch(fetchItemByUserIdAsync(user.id));
-      dispatch(fetchLoggedinUserAsync(user.id));
+      dispatch(fetchItemByUserIdAsync());
+      dispatch(fetchLoggedinUserAsync());
     }
   }, [dispatch, user]);
   return (

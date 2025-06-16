@@ -15,14 +15,7 @@ import {
 import { useSelector } from "react-redux";
 import { href, Link } from "react-router-dom";
 import { selectCart } from "../cart/cartSlice";
-import { selectLoggedInUser } from "../auth/authSlice";
-
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
+import { selectUserInfo } from "../user/userSlice";
 const navigation = [
   { name: "Products", href: "./", user: true },
   { name: "Admin", href: "/admin", admin: true },
@@ -40,10 +33,10 @@ function classNames(...classes) {
 
 function Navbar({ children }) {
   const items = useSelector(selectCart);
-  const user = useSelector(selectLoggedInUser);
+  const userInfo = useSelector(selectUserInfo);
   return (
     <>
-      <div className="min-h-full">
+      {userInfo&&<div className="min-h-full">
         <Disclosure as="nav" className="bg-gray-800">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
@@ -60,7 +53,7 @@ function Navbar({ children }) {
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
                     {navigation.map((item) =>
-                      item[user.role] ? (
+                      item[userInfo.role] ? (
                         <Link
                           key={item.name}
                           to={item.href}
@@ -102,7 +95,7 @@ function Navbar({ children }) {
                         <span className="sr-only">Open user menu</span>
                         <img
                           alt=""
-                          src={user.imageUrl}
+                          src={userInfo.imageUrl}
                           className="size-8 rounded-full"
                         />
                       </MenuButton>
@@ -167,16 +160,16 @@ function Navbar({ children }) {
                 <div className="shrink-0">
                   <img
                     alt=""
-                    src={user.imageUrl}
+                    src={userInfo.imageUrl}
                     className="size-10 rounded-full"
                   />
                 </div>
                 <div className="ml-3">
                   <div className="text-base/5 font-medium text-white">
-                    {user.name}
+                    {userInfo.name}
                   </div>
                   <div className="text-sm font-medium text-gray-400">
-                    {user.email}
+                    {userInfo.email}
                   </div>
                 </div>
                 <Link to={"/cart"}>
@@ -220,7 +213,7 @@ function Navbar({ children }) {
             {children}
           </div>
         </main>
-      </div>
+      </div>}
     </>
   );
 }
