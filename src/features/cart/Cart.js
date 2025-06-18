@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate } from "react-router-dom";
-import { deleteCartItemAsync, selectCart, updateCartAsync } from "./cartSlice";
+import { deleteCartItemAsync, selectCart, selectCartChecked, updateCartAsync } from "./cartSlice";
 
 export default function Cart() {
   const [open, setOpen] = useState(true);
   const products = useSelector(selectCart);
+  const cartChecked = useSelector(selectCartChecked);
   const totalAmount = Math.ceil(products.reduce((amount, item)=>item.product.price*item.quantity+amount,0));
   const totalItems = products.reduce((total,item)=>item.quantity+total,0)
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export default function Cart() {
   }
   return (
     <>
-      {!products.length && <Navigate to={'/'} replace={true}></Navigate>}
+      {!products.length && cartChecked && <Navigate to={'/'} replace={true}></Navigate>}
       <div className="mx-auto mt-12 max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div className="mt-8">
         <h2 className="text-4xl my-5 font-bold tracking-tight text-gray-900">Cart</h2>

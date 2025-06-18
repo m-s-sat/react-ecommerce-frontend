@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
-import { checkUserAsync, selectError, selectLoggedInUser } from '../authSlice';
+import { loginUserAsync, selectError, selectLoggedInUser } from '../authSlice';
 
 export default function Login() {
   const {register, handleSubmit, formState:{errors}} = useForm();
@@ -26,7 +26,7 @@ export default function Login() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form noValidate onSubmit={handleSubmit((data)=>{
-            dispatch(checkUserAsync({email:data.email,password:data.password}))
+            dispatch(loginUserAsync({email:data.email,password:data.password}))
             console.log(data)
           })} className="space-y-6">
             <div>
