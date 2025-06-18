@@ -14,14 +14,28 @@ export function createUsers(userData) {
 
 export function checkUser(loginInfo){
   return new Promise (async (resolve,reject)=>{
-    const response = await fetch("http://localhost:8080/auth/login");
-    const data = await response.json();
-    if(response.ok) resolve({data});
-    else reject({message:"Email or password may be wrong"});
+    try{
+      const response = await fetch("http://localhost:8080/auth/login",{
+      method:"POST",
+      body:JSON.stringify(loginInfo),
+      headers:{"content-type":"application/json"},
+      });
+      if(response.ok){
+        const data = await response.json();
+        resolve({data});
+      }
+      else{
+        const err = await response.text();
+        reject(err);
+      }
+    }
+    catch(err){
+      reject(err);
+    }
   })
 }
 
-export function signOut(){
+export function signOut(userId){
   return new Promise(async(resolve)=>{
     resolve({data:'success'});
   })

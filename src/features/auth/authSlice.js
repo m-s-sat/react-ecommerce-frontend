@@ -17,9 +17,14 @@ export const createUserAsync = createAsyncThunk(
 );
 export const checkUserAsync = createAsyncThunk(
   'users/checkUser',
-  async(loginInfo)=>{
-    const response = await checkUser(loginInfo);
-    return response.data;
+  async(loginInfo,{rejectWithValue})=>{
+    try{
+      const response = await checkUser(loginInfo);
+      return response.data;
+    }
+    catch(err){
+      return rejectWithValue(err);
+    }
   }
 )
 
