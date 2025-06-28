@@ -30,6 +30,8 @@ import AdminProductDetailsPage from "./pages/AdminProductDetailsPage";
 import AdminProductFormPage from "./pages/AdminProductFormPage";
 import AdminOrderPage from "./pages/AdminOrderPage";
 import StripeCheckout from "./pages/StripeCheckout";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
+
 
 const router = createBrowserRouter([
   {
@@ -137,7 +139,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/orders",
+    path: "/my-orders",
     element: (
       <Protected>
         <UserOrdersPage></UserOrdersPage>
@@ -159,6 +161,10 @@ const router = createBrowserRouter([
   {
     path: "/forgot-password",
     element: <ForgotpasswordPage></ForgotpasswordPage>,
+  },
+  {
+    path:"/reset-password",
+    element: <ResetPasswordPage></ResetPasswordPage>
   },
   {
     path: "*",

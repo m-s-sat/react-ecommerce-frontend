@@ -4,7 +4,7 @@ import axios from "axios";
 
 export function fetchAllProduct() {
   return new Promise(async(resolve)=>{
-    const data = await axios.get('http://localhost:8080/products');
+    const data = await axios.get('/products');
     resolve(data);
   });
 }
@@ -31,7 +31,7 @@ export function fetchProductByFilters(filter,sort,pagination,admin){
   }
   if(admin) querryString+='admin=true';
   return new Promise (async(resolve)=>{
-    const response = await fetch(`http://localhost:8080/products?`+querryString)
+    const response = await fetch(`/products?`+querryString)
     const data = await response.json();
     const totalItems = await response.headers.get('X-Total-Count');
     resolve({data:{products:data,totalItems:+totalItems}});
@@ -40,21 +40,21 @@ export function fetchProductByFilters(filter,sort,pagination,admin){
 
 export function fetchAllCategories(){
   return new Promise (async (resolve)=>{
-    const data = await axios.get("http://localhost:8080/category")
+    const data = await axios.get("/category")
     resolve(data);
   })
 }
 
 export function fetchAllBrands(){
   return new Promise(async (resolve)=>{
-    const data = await axios.get("http://localhost:8080/brands");
+    const data = await axios.get("/brands");
     resolve(data);
   })
 }
 
 export function fetchProductById(id){
   return new Promise (async(resolve)=>{
-    const response = await fetch('http://localhost:8080/products/'+id);
+    const response = await fetch('/products/'+id);
     const data = await response.json();
     resolve({data});
   })
@@ -62,7 +62,7 @@ export function fetchProductById(id){
 
 export function createProduct(product){
   return new Promise (async(resolve)=>{
-    const response = await fetch("http://localhost:8080/products/",{
+    const response = await fetch("/products/",{
       method:'POST',
       body:JSON.stringify(product),
       headers:{'content-type':'application/json'},
@@ -74,7 +74,7 @@ export function createProduct(product){
 
 export function updateProduct(product){
   return new Promise (async(resolve)=>{
-    const response = await fetch("http://localhost:8080/products/"+product.id,{
+    const response = await fetch("/products/"+product.id,{
       method:'PATCH',
       body:JSON.stringify(product),
       headers:{'content-type':'application/json'},

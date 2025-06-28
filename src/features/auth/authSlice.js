@@ -1,11 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { loginUser, createUsers, signOut, checkAuth } from './authAPI';
+import { loginUser, createUsers, signOut, checkAuth, resetPasswordRequest } from './authAPI';
 
 const initialState = {
   loggedInUserToken: null,
   status: 'idle',
   error:null,
   userChecked: false,
+  mailSent: false,
+  passwordResetStatus: false,
 };
 
 export const createUserAsync = createAsyncThunk(
@@ -34,6 +36,32 @@ export const checkAuthAsync = createAsyncThunk(
   async()=>{
     try{
       const response = await checkAuth();
+      return response.data;
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+)
+
+export const resetPasswordRequestAsync = createAsyncThunk(
+  'user/resetPasswordRequest',
+  async(email)=>{
+    try{
+      const response = await resetPasswordRequest(email);
+      return response.data;
+    }
+    catch(err){
+      console.log(err);
+    }
+  }
+)
+
+export const resetPasswordAsync = createAsyncThunk(
+  'user/resetPassword',
+  async(email)=>{
+    try{
+      const response = await resetPasswordRequest(email);
       return response.data;
     }
     catch(err){
@@ -93,10 +121,26 @@ export const userSlice = createSlice({
       .addCase(checkAuthAsync.rejected,(state,action)=>{
         state.status = 'reject';
         state.userChecked = false;
+      })
+      .addCase(resetPasswordRequestAsync.pending,(state)=>{
+        state.status = 'pending';
+      })
+      .addCase(resetPasswordRequestAsync.fulfilled,(state,action)=>{
+        state.mailSent = true;
+        state.status = 'idle'
+      })
+      .addCase(resetPasswordAsync.pending,(state)=>{
+        state.status = 'pending';
+      })
+      .addCase(resetPasswordAsync.fulfilled,(state,action)=>{
+        state.passwordResetStatus = true;
+        state.status = 'idle';
       });
   },
 });
 
+export const selectPasswordResetStatus = (state) => state.auth.passwordResetStatus;
+export const selectMailSent = (state) => state.auth.mailSent;
 export const selectLoggedInUser = (state) => state.auth.loggedInUserToken;
 export const selectError = (state)=>state.auth.error;
 export const selectUserChecked = (state)=>state.auth.userChecked;
