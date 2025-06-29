@@ -84,13 +84,13 @@ export function resetPasswordRequest(email){
   })
 }
 
-export function resetPassword(){
+export function resetPassword(data){
   return new Promise(async(resolve,reject)=>{
     try{
       const response = await fetch('/auth/reset-password',{
         method: "POST",
         headers:{'content-type':'application/json'},
-        body:JSON.stringify()
+        body:JSON.stringify(data)
       });
       if(response.ok){
         const data = await response.json();

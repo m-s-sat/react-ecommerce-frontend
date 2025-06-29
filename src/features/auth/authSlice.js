@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { loginUser, createUsers, signOut, checkAuth, resetPasswordRequest } from './authAPI';
+import { loginUser, createUsers, signOut, checkAuth, resetPasswordRequest, resetPassword } from './authAPI';
 
 const initialState = {
   loggedInUserToken: null,
@@ -59,13 +59,14 @@ export const resetPasswordRequestAsync = createAsyncThunk(
 
 export const resetPasswordAsync = createAsyncThunk(
   'user/resetPassword',
-  async(email)=>{
+  async(data,{rejectWithValue})=>{
     try{
-      const response = await resetPasswordRequest(email);
+      const response = await resetPassword(data);
       return response.data;
     }
     catch(err){
       console.log(err);
+      return rejectWithValue(err);
     }
   }
 )
@@ -135,6 +136,10 @@ export const userSlice = createSlice({
       .addCase(resetPasswordAsync.fulfilled,(state,action)=>{
         state.passwordResetStatus = true;
         state.status = 'idle';
+      })
+      .addCase(resetPasswordAsync.rejected,(state,action)=>{
+        state.passwordResetStatus = false;
+        state.error = action.error;
       });
   },
 });
